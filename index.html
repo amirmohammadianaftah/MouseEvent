@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 2000px;
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            overflow-y: hidden;
+            /* background-color: #26394e; */
+        }
+
+        .ham {
+            width: 240px;
+            height: 100%;
+            background-color: #fed057;
+            display: flex;
+            justify-content: center;
+            transform: translateX(-170px);
+
+            >i {
+                /* border: 2px solid blue; */
+                width: 30%;
+                font-size: 30px;
+                transition: 0.5s ease-out;
+                color: white;
+                display: flex;
+                justify-content: center;
+            }
+
+            >ul {
+                height: 100%;
+                /* border: 2px solid red; */
+                width: 70%;
+                padding-top: 40px;
+
+                >li {
+                    padding-left: 30px;
+                    margin-bottom: 30px;
+                    color: white;
+                    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                    font-size: 18px;
+                    list-style-type: none;
+                }
+            }
+        }
+
+        .big {
+            transform: translateX(-170px);
+            width: 1600px;
+            height: 100%;
+            background-color: #26394e;
+            display: flex;
+            justify-content: center;
+
+            >h2 {
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                color: white;
+                font-size: 20px;
+                transition: 0.4s ease-out;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ham">
+        <ul>
+            <li>Menu Item</li>
+            <li>Menu Item</li>
+            <li>Menu Item</li>
+            <li>Menu Item</li>
+            <li>Menu Item</li>
+            <li>Menu Item</li>
+        </ul>
+        <i class="bi bi-list"></i>
+    </div>
+    <div class="big">
+        <h2>hover close to the menu</h2>
+    </div>
+</body>
+<script>
+    const ham = document.querySelector('.ham')
+    const big = document.querySelector('.big')
+    const bod = document.querySelector('body')
+    const myHei = innerHeight
+    console.log(myHei);
+    big.style.width =
+
+        bod.addEventListener('mousemove', (e) => {
+            let y = e.clientY
+            let v = bod.children[0].children[1]
+            let w = bod.children[1].children[0]
+            console.log(y);
+
+            if (y <= (myHei - 25)) {
+                v.style.transform = 'translateY(' + y + 'px)'
+                w.style.transform = 'translateY(' + y + 'px)'
+            } else {
+                v.style.transform = 'translateY(' + (y - 25) + 'px)'
+                w.style.transform = 'translateY(' + (y - 25) + 'px)'
+            }
+        })
+
+    ham.addEventListener('mouseenter', () => {
+        ham.style.transition = '1s'
+        big.style.transition = '1s'
+        big.style.transform = 'translateX(0)'
+        ham.style.transform = 'translateX(0)'
+    })
+
+    ham.addEventListener('mouseleave', () => {
+        ham.style.transition = '1s'
+        big.style.transition = '1s'
+        big.style.transform = 'translateX(-170px)'
+        ham.style.transform = 'translateX(-170px)'
+    })
+
+</script>
+
+</html>
